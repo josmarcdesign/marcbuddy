@@ -1,7 +1,15 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
+import dns from 'dns';
 
 dotenv.config();
+
+// Forçar IPv4 primeiro para evitar erro ENETUNREACH com IPv6 no Render
+// Isso é necessário porque o Render pode não ter suporte IPv6 completo
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+  console.log('✅ DNS configurado para priorizar IPv4');
+}
 
 // Configuração da conexão PostgreSQL direta (para manter compatibilidade com código existente)
 // O Supabase permite conexão direta via PostgreSQL usando connection string ou variáveis
@@ -42,14 +50,40 @@ if (process.env.SUPABASE_DB_CONNECTION_STRING) {
     }
   }
   
-  pool = new Pool({
-    connectionString: connectionString,
-    ssl: { rejectUnauthorized: false },
-    family: 4, // Forçar IPv4 (evita erro ENETUNREACH com IPv6 no Render)
-    max: 20,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 10000,
-  });
+  // Fazer parse da connection string para usar opções individuais
+  // Isso permite usar family: 4 que não funciona com connectionString diretamente
+  try {
+    const url = new URL(connectionString);
+    // Extrair usuário e senha do formato postgres.umydjofqoknbggwtwtqv:senha@host
+    const authPart = url.username || '';
+    const authParts = authPart.split(':');
+    const user = authParts[0] || '';
+    const password = authParts[1] || url.password || '';
+    
+    pool = new Pool({
+      host: url.hostname,
+      port: parseInt(url.port) || 5432,
+      database: url.pathname.slice(1) || 'postgres',
+      user: user,
+      password: password,
+      ssl: { rejectUnauthorized: false },
+      family: 4, // Forçar IPv4 (evita erro ENETUNREACH com IPv6 no Render)
+      max: 20,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 10000,
+    });
+    console.log('✅ Pool configurado com opções individuais (family: 4 forçado)');
+  } catch (parseError) {
+    // Fallback: usar connectionString se o parse falhar
+    console.warn('⚠️  Erro ao fazer parse da connection string, usando connectionString diretamente:', parseError.message);
+    pool = new Pool({
+      connectionString: connectionString,
+      ssl: { rejectUnauthorized: false },
+      max: 20,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 10000,
+    });
+  }
 } else if (process.env.SUPABASE_DB_HOST) {
   // Usar variáveis individuais do Supabase
   pool = new Pool({
