@@ -12,8 +12,19 @@ let pool;
 
 if (process.env.SUPABASE_DB_CONNECTION_STRING) {
   // Usar connection string do Supabase
+  // IMPORTANTE: Se usar pooler (porta 6543), pode ter problemas com schemas customizados
+  // Para schemas customizados como 'marcbuddy', use a connection string direta (porta 5432)
+  let connectionString = process.env.SUPABASE_DB_CONNECTION_STRING;
+  
+  // Se for pooler (porta 6543), tentar converter para direta (porta 5432)
+  if (connectionString.includes(':6543/')) {
+    console.warn('⚠️  Usando pooler (porta 6543). Para schemas customizados, considere usar connection string direta (porta 5432)');
+    // Tentar converter para porta direta
+    connectionString = connectionString.replace(':6543/', ':5432/');
+  }
+  
   pool = new Pool({
-    connectionString: process.env.SUPABASE_DB_CONNECTION_STRING,
+    connectionString: connectionString,
     ssl: { rejectUnauthorized: false },
     max: 20,
     idleTimeoutMillis: 30000,
@@ -49,9 +60,16 @@ if (process.env.SUPABASE_DB_CONNECTION_STRING) {
   });
 }
 
-// Testar conexão
-pool.on('connect', () => {
-  console.log('✅ Conectado ao banco de dados PostgreSQL');
+// Configurar search_path quando uma conexão é criada
+pool.on('connect', async (client) => {
+  try {
+    // Definir search_path para incluir marcbuddy e public
+    await client.query('SET search_path TO marcbuddy, public');
+    console.log('✅ Conectado ao banco de dados PostgreSQL (search_path: marcbuddy, public)');
+  } catch (error) {
+    console.warn('⚠️  Não foi possível configurar search_path:', error.message);
+    console.log('✅ Conectado ao banco de dados PostgreSQL');
+  }
   if (process.env.SUPABASE_DB_HOST || process.env.SUPABASE_DB_CONNECTION_STRING) {
     console.log('📦 Conexão usando variáveis SUPABASE_* (connection string ou host)');
   }
