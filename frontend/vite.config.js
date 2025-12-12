@@ -57,23 +57,22 @@ export default defineConfig({
     https: httpsConfig,
     proxy: {
       '/api': {
-        target: httpsConfig ? 'https://localhost:3001' : 'http://localhost:3001',
+        // Usar backend do Render em produção, ou localhost em desenvolvimento
+        target: process.env.VITE_API_URL || 'https://marcbuddy-backend.onrender.com',
         changeOrigin: true,
-        secure: false, // Aceita certificados auto-assinados
+        secure: true, // Render usa HTTPS
         ws: true,
         configure: (proxy, _options) => {
           proxy.on('error', (err, _req, _res) => {
             console.log('❌ Proxy error:', err.message);
-            if (err.code === 'ECONNREFUSED') {
-              console.log('⚠️  Backend não está rodando na porta 3001. Certifique-se de executar: npm run dev no diretório backend');
-            }
+            console.log('💡 Verificando conexão com backend do Render...');
           });
         },
       },
       '/uploads': {
-        target: httpsConfig ? 'https://localhost:3001' : 'http://localhost:3001',
+        target: process.env.VITE_API_URL || 'https://marcbuddy-backend.onrender.com',
         changeOrigin: true,
-        secure: false, // Aceita certificados auto-assinados
+        secure: true, // Render usa HTTPS
       }
     }
   },

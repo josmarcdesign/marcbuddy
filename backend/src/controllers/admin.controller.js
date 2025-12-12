@@ -776,11 +776,12 @@ export const updateUserSubscription = async (req, res) => {
 export const getPlansConfig = async (req, res) => {
   try {
     // Não verificar acesso admin - essa rota pode ser pública
+    // Usar tabela subscription_plans do schema marcbuddy
     const plans = await query('SELECT * FROM marcbuddy.subscription_plans WHERE plan_status = $1 ORDER BY sort_order, id', ['active']);
     res.json({ success: true, data: { plans: plans.rows } });
   } catch (error) {
     console.error('Erro ao buscar configuração de planos:', error);
-    res.status(500).json({ success: false, message: 'Erro ao buscar planos' });
+    res.status(500).json({ success: false, message: 'Erro ao buscar planos', error: error.message });
   }
 };
 
@@ -789,7 +790,7 @@ export const getPlansConfig = async (req, res) => {
  */
 export const getAllPlans = async (req, res) => {
   try {
-    const plans = await query('SELECT * FROM marcbuddy.subscription_plans ORDER BY sort_order, id');
+    const plans = await query('SELECT * FROM plans ORDER BY id');
     res.json({ success: true, data: { plans: plans.rows } });
   } catch (error) {
     console.error('Erro ao buscar planos:', error);
