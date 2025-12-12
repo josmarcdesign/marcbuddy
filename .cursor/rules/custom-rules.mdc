@@ -1,0 +1,334 @@
+---
+alwaysApply: true
+description: "Regras críticas do projeto MarcBuddy - Estado atual: Supabase, schemas separados, mclients no schema mclients, proteções críticas"
+filePattern: "*"
+---
+
+/**
+ * ====================================================================
+ * REGRAS CRÍTICAS DO PROJETO MARCBUDDY - ESTADO ATUAL
+ * ====================================================================
+ * 
+ * Este arquivo contém as regras mais importantes do projeto.
+ * SEMPRE leia este arquivo antes de fazer modificações críticas.
+ * 
+ * Última atualização: Dezembro 2024
+ */
+
+/**
+ * ====================================================================
+ * 1. ARQUITETURA DO BANCO DE DADOS - SUPABASE
+ * ====================================================================
+ * 
+ * O projeto usa Supabase PostgreSQL como banco de dados principal.
+ * 
+ * ESTRUTURA DE SCHEMAS:
+ * - Schema `public`: Tabelas da plataforma (users, subscriptions, plans, payment_methods, coupons, coupon_usage)
+ * - Schema `mclients`: Todas as 12 tabelas da ferramenta mclients
+ * 
+ * TABELAS NO SCHEMA MCLIENTS:
+ * - mclients_clients
+ * - mclients_follow_through_models
+ * - mclients_follow_throughs
+ * - mclients_demands
+ * - mclients_payments
+ * - mclients_documents
+ * - mclients_services
+ * - mclients_tasks
+ * - mclients_pending_approvals
+ * - mclients_time_entries
+ * - mclients_activities
+ * - mclients_briefing_submissions
+ * 
+ * IMPORTANTE:
+ * - SEMPRE use `mclients.` ao referenciar tabelas do schema mclients nas queries
+ * - SEMPRE use `public.` ao referenciar tabelas do schema public (ou omita se for o padrão)
+ * - Foreign keys funcionam entre schemas diferentes
+ * - Realtime está configurado para ambos os schemas
+ * 
+ * CONEXÃO:
+ * - Connection string: `SUPABASE_DB_CONNECTION_STRING` no .env
+ * - URL: `https://umydjofqoknbggwtwtqv.supabase.co`
+ * - Todas as queries devem usar o schema correto
+ */
+
+/**
+ * ====================================================================
+ * 2. PROTEÇÕES CRÍTICAS - MCLIENTS CONTROLLER
+ * ====================================================================
+ * 
+ * O arquivo `backend/src/controllers/mclients.controller.js` contém lógica crítica.
+ * Veja `backend/src/controllers/PROTECAO_MCLIENTS.md` para detalhes completos.
+ * 
+ * REGRAS CRÍTICAS QUE NÃO DEVEM SER MODIFICADAS:
+ * 
+ * 1. Função `saveFollowThrough`:
+ *    - DEVE sempre salvar o `briefing_url` (pode ser null, mas DEVE ser salvo)
+ *    - O INSERT usa `ON CONFLICT (external_id)` e DEVE retornar `id, external_id, briefing_url`
+ *    - NÃO remover o campo briefing_url do INSERT
+ * 
+ * 2. Função `saveMClientsData`:
+ *    - DEVE resolver `modelId` e `clientId` antes de salvar
+ *    - DEVE permitir `clientId` null para novos clientes (isNewClient=true)
+ *    - DEVE filtrar `pendingApprovals` com `followThroughId` inválido para evitar FK violations
+ *    - NÃO fazer ROLLBACK se cliente não for encontrado para novos clientes
+ * 
+ * 3. Função `getFollowThroughByToken`:
+ *    - DEVE buscar primeiro apenas pelo token
+ *    - DEVE tentar buscar com username também (fallback)
+ *    - NÃO modificar a lógica de busca
+ * 
+ * 4. Função `submitBriefing`:
+ *    - NÃO criar cliente automaticamente quando o formulário é enviado
+ *    - O cliente só deve ser criado quando o usuário aprovar a aprovação pendente
+ *    - Apenas criar aprovação pendente com os dados do cliente
+ */
+
+/**
+ * ====================================================================
+ * 3. FLUXO DE CRIAÇÃO DE CLIENTES - MCLIENTS
+ * ====================================================================
+ * 
+ * IMPORTANTE: Clientes NÃO são criados automaticamente quando o formulário é enviado.
+ * 
+ * FLUXO CORRETO:
+ * 1. Usuário preenche formulário de briefing → apenas cria aprovação pendente
+ * 2. Admin vê aprovação pendente → pode ver respostas completas
+ * 3. Admin aprova → cliente e demanda são criados no banco
+ * 4. Admin rejeita → aprovação marcada como rejeitada, cliente não é criado
+ * 
+ * NUNCA:
+ * - Criar cliente automaticamente no `submitBriefing`
+ * - Criar cliente antes da aprovação
+ * - Modificar a lógica para criar cliente automaticamente
+ */
+
+/**
+ * ====================================================================
+ * 4. EXCLUSÃO DE DADOS
+ * ====================================================================
+ * 
+ * EXCLUSÃO DE CLIENTES:
+ * - Rota: `DELETE /api/mclients/clients/:id`
+ * - Função: `deleteClient` em `mclients.controller.js`
+ * - Aceita ID numérico (do banco) ou UUID (converte automaticamente)
+ * - CASCADE remove demandas, pagamentos, documentos relacionados
+ * 
+ * EXCLUSÃO DE FOLLOW-THROUGHS:
+ * - Rota: `DELETE /api/mclients/follow-throughs/:id`
+ * - Usa `external_id` (UUID) para identificar
+ * 
+ * EXCLUSÃO DE MODELOS:
+ * - Rota: `DELETE /api/mclients/models/:id`
+ * - Usa `external_id` (UUID) para identificar
+ */
+
+/**
+ * ====================================================================
+ * 5. REGRA DE ÍCONES
+ * ====================================================================
+ * 
+ * SEMPRE utilize ícones de bibliotecas profissionais ao invés de emojis de texto.
+ * 
+ * Bibliotecas preferidas (nessa ordem):
+ * 1. Lucide React (lucide-react) - Moderna, leve, consistente
+ * 2. Heroicons React (@heroicons/react) - Oficial do Tailwind
+ * 3. React Icons (react-icons) - Coleção ampla de ícones
+ * 
+ * NUNCA use emojis (💳, 📄, 🌐, ✅, etc.) em elementos de interface.
+ * Use ícones SVG das bibliotecas acima.
+ */
+
+/**
+ * ====================================================================
+ * 6. REGRA DE DIRETÓRIOS E COMANDOS NPM
+ * ====================================================================
+ * 
+ * SEMPRE verifique o diretório atual antes de executar comandos npm.
+ * 
+ * Estrutura do projeto:
+ * - `/` - Raiz do projeto
+ * - `/frontend` - Diretório do frontend (React/Vite)
+ * - `/backend` - Diretório do backend (Node.js/Express)
+ * 
+ * IMPORTANTE: No PowerShell, use `;` ao invés de `&&` para encadear comandos.
+ * - ✅ CORRETO: `cd backend; npm run dev`
+ * - ❌ ERRADO: `cd backend && npm run dev` (não funciona no PowerShell)
+ */
+
+/**
+ * ====================================================================
+ * 7. REGRA DE AUTENTICAÇÃO PARA TESTES
+ * ====================================================================
+ * 
+ * CRÍTICO: SEMPRE FAÇA LOGIN PRIMEIRO AO TESTAR FERRAMENTAS OU RECURSOS PROTEGIDOS
+ * 
+ * Credenciais para login (CONTA ADMIN):
+ * - Email: `josmarcdesign@gmail.com`
+ * - Senha: `12345`
+ * 
+ * Esta conta tem permissões de admin e acesso a todas as ferramentas.
+ * SEMPRE faça login antes de testar qualquer funcionalidade protegida.
+ */
+
+/**
+ * ====================================================================
+ * 8. REGRA DE GERENCIAMENTO DE SERVIDORES
+ * ====================================================================
+ * 
+ * SEMPRE verifique se os servidores backend e frontend estão rodando.
+ * 
+ * Comandos para iniciar:
+ * - Backend: `cd backend; npm run dev` (porta 3001)
+ * - Frontend: `cd frontend; npm run dev` (porta 3000)
+ * 
+ * IMPORTANTE: No PowerShell, use `;` ao invés de `&&`.
+ * Para comandos em background, use caminho completo ou combine cd com comando usando `;`.
+ */
+
+/**
+ * ====================================================================
+ * 9. SUPABASE REALTIME
+ * ====================================================================
+ * 
+ * O projeto usa Supabase Realtime para monitorar mudanças no banco de dados.
+ * 
+ * CONFIGURAÇÃO:
+ * - Todas as tabelas mclients estão na publicação `supabase_realtime`
+ * - Schema: `mclients` (não `public`)
+ * - Canais: `realtime:mclients:mclients_clients`, etc.
+ * 
+ * HOOKS:
+ * - `useRealtime(tableName, filter)` - Hook para escutar tabelas
+ * - `useRealtimeTable(tableName, userId)` - Hook simplificado
+ * 
+ * COMPONENTES:
+ * - `RealtimeConsole` - Componente para exibir eventos em tempo real
+ * 
+ * IMPORTANTE: Ao usar Realtime, especifique o schema correto:
+ * - Para tabelas mclients: usar schema `mclients`
+ * - Para tabelas public: usar schema `public` (padrão)
+ */
+
+/**
+ * ====================================================================
+ * 10. ESTRUTURA DE DADOS - MCLIENTS
+ * ====================================================================
+ * 
+ * DADOS SÃO SALVOS NO BANCO DE DADOS (NÃO em arquivos JSON):
+ * - Todos os dados são salvos no Supabase PostgreSQL
+ * - Schema `mclients` para dados da ferramenta
+ * - Schema `public` para dados da plataforma
+ * 
+ * SINCRONIZAÇÃO:
+ * - Frontend usa `useMClientsData` hook para gerenciar dados
+ * - Backend usa queries diretas ao PostgreSQL
+ * - IDs são sincronizados via `external_id` (UUID) para follow-throughs e modelos
+ * 
+ * NÃO EXISTE MAIS:
+ * - Pasta `backend/data/mclients/` (foi removida)
+ * - Arquivos `data.json` locais
+ * - Tabela `mclients_data` JSONB (foi substituída por tabelas relacionais)
+ */
+
+/**
+ * ====================================================================
+ * 11. ROW LEVEL SECURITY (RLS)
+ * ====================================================================
+ * 
+ * RLS está habilitado em todas as tabelas públicas.
+ * 
+ * POLÍTICAS:
+ * - `service_role`: Acesso total (backend)
+ * - `authenticated`: Acesso aos próprios dados (user_id)
+ * - `anon`: Leitura pública para planos, payment_methods, coupons
+ * 
+ * IMPORTANTE:
+ * - Backend usa `service_role` (bypass RLS)
+ * - Frontend usa `authenticated` (respeita RLS)
+ * - Queries devem sempre incluir `user_id` para filtragem
+ */
+
+/**
+ * ====================================================================
+ * 12. MIGRAÇÕES DO BANCO DE DADOS
+ * ====================================================================
+ * 
+ * MIGRAÇÕES IMPORTANTES:
+ * - V11: Tabela mclients_data (JSONB) - OBSOLETA, não usar mais
+ * - V12: Tabelas relacionais mclients_* (schema public) - OBSOLETA
+ * - V13: Adição de external_id (UUID) para sincronização
+ * - V14: Habilitar RLS em todas as tabelas
+ * - V15: Configurar Realtime para tabelas mclients
+ * - V16: Adicionar users ao Realtime
+ * - V17: Criar schema mclients e mover tabelas
+ * 
+ * EXECUTAR MIGRAÇÕES:
+ * - `npm run migrate:v17` - Executar migração específica
+ * - `npm run migrate:all` - Executar todas as migrações
+ * 
+ * IMPORTANTE: Sempre execute migrações em ordem sequencial.
+ */
+
+/**
+ * ====================================================================
+ * 13. ARQUIVOS SENSÍVEIS
+ * ====================================================================
+ * 
+ * Sempre tenha atenção redobrada ao editar códigos sensíveis de:
+ * - Segurança (auth, token, senha, password)
+ * - Autenticação e autorização
+ * - Operações de banco de dados (database, db, query)
+ * - Lógica central do projeto
+ * 
+ * Antes de alterar, revise os impactos, faça backups e teste cuidadosamente.
+ */
+
+module.exports = {
+  meta: {
+    type: "problem",
+    docs: {
+      description: "Regras críticas do projeto MarcBuddy - Supabase, schemas separados, proteções mclients",
+      category: "Best Practices",
+      recommended: true,
+    },
+    schema: [],
+    messages: {
+      attention: "Revise cuidadosamente ao alterar códigos de segurança, autenticação, autorização, operações de banco de dados ou lógica central.",
+    },
+  },
+
+  create(context) {
+    const sensitivePatterns = [
+      /auth/i,
+      /token/i,
+      /senha|password/i,
+      /database|db|query/i,
+      /ban|unban/i,
+      /subscription/i,
+      /plan/i,
+      /user.*role/i,
+      /validate/i,
+      /mclients/i,
+      /briefing/i,
+      /follow.*through/i,
+    ];
+
+    function isSensitive(filename) {
+      return sensitivePatterns.some((pattern) => pattern.test(filename));
+    }
+
+    return {
+      Program(node) {
+        const filename = context.getFilename();
+
+        if (isSensitive(filename)) {
+          context.report({
+            node,
+            messageId: "attention",
+          });
+        }
+      },
+    };
+  },
+};

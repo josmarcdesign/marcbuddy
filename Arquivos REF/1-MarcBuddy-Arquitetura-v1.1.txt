@@ -1,0 +1,64 @@
+MARCBUDDY – ARQUITETURA DE SISTEMA V1.1 (COMUNIDADE & WHATSAPP)
+Documento Técnico de Referência
+
+1. VISÃO GERAL
+MarcBuddy é uma plataforma SaaS que opera em quatro níveis:
+1. Plugins Desktop: Extensões para Adobe Illustrator, Photoshop e Figma.
+2. Ferramentas Web: Utilitários (Renomeador, Extrator de Cores, Compressor).
+3. Plataforma Central: Autenticação, gestão de assinaturas, conteúdos.
+4. Módulo de Comunidade: Chat interno em tempo real e Integração WhatsApp.
+
+2. ESTRUTURA DE PLANOS (REGRAS DE NEGÓCIO)
+- Gratuito (R$0): Acesso a 1 plugin básico, 2-3 ferramentas web. Chat: Apenas leitura (#geral). WhatsApp: Grupo Comunidade.
+- Básico (R$29,90): Todos os plugins/ferramentas. Chat: Escrita liberada (#geral, #tutoriais). WhatsApp: Grupo Pro.
+- Completo (R$49,90): Beta access, Newsletter Premium. Chat: Acesso à sala #vip-assinantes. Prioridade de suporte.
+- Times (R$99,90): Até 5 usuários, sala privada de equipe, gestão de membros.
+
+3. MÓDULO DE CHAT (PLATAFORMA)
+3.1 Estrutura de Salas
+- #geral: Público (Gratuitos apenas leem). Avisos e boas-vindas.
+- #tutoriais: Exclusivo Assinantes (Básico+). Compartilhamento de workflows.
+- #dúvidas: Q&A estruturado. Reações de "Útil" e "Resolvido".
+- #showcase: Portfólio visual (screenshots/gifs).
+- #plug-ins: Suporte técnico e reports de bugs.
+- #vip-assinantes: Exclusivo Completo/Times. Contato direto com a equipe.
+- #off-topic: Conversa livre.
+
+3.2 Funcionalidades Técnicas
+- WebSockets/Socket.io: Mensagens em tempo real, indicador "digitando", presença online.
+- Recursos: Emojis, Upload de imagem, Code syntax highlighting, Threads, Reações.
+
+4. INTEGRAÇÃO WHATSAPP (VIA TWILIO)
+4.1 Grupo Comunidade (Broadcast)
+- Público: Todos os usuários.
+- Conteúdo: Notícias, Inspo, Anúncios de features (1-2x semana).
+- Objetivo: Funil de conversão para planos pagos.
+
+4.2 Grupo Pro (VIP)
+- Público: Assinantes Básico, Completo e Times.
+- Conteúdo: Conversa livre, Beta features, Roadmap, Suporte (<4h).
+- Objetivo: Retenção e feedback.
+
+4.3 Fluxo de Automação
+Evento na Plataforma (ex: Novo Plugin) -> Webhook -> API Twilio -> Disparo para Grupos.
+Templates pré-aprovados para: Novo Plugin, Dúvida Respondida, Renovação de Assinatura, Promoções.
+
+5. SCHEMA DO BANCO DE DADOS (MÓDULOS NOVOS)
+
+[Tabela: chat_rooms]
+- id (UUID), name (VARCHAR), type (public/vip/dm), access_level (all/basic/complete/team).
+
+[Tabela: chat_messages]
+- id (UUID), room_id, user_id, content (TEXT), has_image (BOOL), image_url, created_at.
+
+[Tabela: chat_reactions]
+- id (UUID), message_id, user_id, emoji.
+
+[Tabela: whatsapp_groups]
+- id (UUID), name, type (broadcast/group), twilio_group_id.
+
+[Tabela: whatsapp_users]
+- user_id, phone_number, verified_at, opted_in.
+
+[Tabela: user_engagement]
+- id, user_id, event_type (chat_message, whatsapp_click), platform.

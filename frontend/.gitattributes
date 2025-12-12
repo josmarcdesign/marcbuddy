@@ -1,0 +1,31 @@
+# Git Attributes - MarcBuddy Frontend
+
+# Fontes e arquivos binários
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.otf binary
+
+# Imagens
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+
+# SVGs como texto (para diff)
+*.svg text
+
+# CSS e JS com LF
+*.css text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# HTML
+*.html text eol=lf

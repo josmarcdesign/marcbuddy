@@ -1,0 +1,53 @@
+PLANOS E LIMITES - MARCBUDDY
+============================
+
+Visão rápida
+- Trial 7 dias (R$ 0,00): degustação com limites mínimos; exige upgrade após 7 dias.
+- MBuddy Classic (R$ 29,90/mês): plano de volume para freela/solo.
+- MBuddy Pro (R$ 59,90/mês): recomendado para uso profissional sério, limites ampliados.
+- MBuddy Team (R$ 149,90/mês): multiusuário (até 5), para pequenas agências.
+
+Detalhamento por plano (proposta de limites/benefícios)
+
+Trial 7 dias (R$ 0,00)
+- MClients: até 2 clientes, 2 follow-throughs/briefings ativos, 2 aprovações pendentes.
+- ColorBuddy: até 10 extrações/gerações de paleta no período.
+- ImageBuddy: até 10 compressões, tamanho máx. arquivo 2 MB.
+- Plugins: nenhum plugin premium; apenas visualização da página de plugins.
+- Usuários: 1.
+- Suporte: básico (e-mail), sem SLA.
+- Observação: upgrade necessário após 7 dias para continuar usando.
+
+MBuddy Classic (R$ 29,90/mês)
+- MClients: até 10 clientes, 10 follow-throughs/briefings ativos, 10 aprovações pendentes; anexos/documentos limitados a uso leve.
+- ColorBuddy: até 100 extrações/gerações de paleta por mês.
+- ImageBuddy: até 100 compressões por mês; tamanho máx. arquivo 5 MB.
+- Plugins: 1 plugin incluso (ex.: Adobe Illustrator) quando lançado; demais como add-on.
+- Usuários: 1.
+- Suporte: básico (e-mail).
+- Beta access: não.
+
+MBuddy Pro (R$ 59,90/mês)
+- MClients: até 50 clientes, 50 follow-throughs/briefings ativos, 50 aprovações pendentes; anexos/documentos moderados.
+- ColorBuddy: até 500 extrações/gerações de paleta por mês.
+- ImageBuddy: até 500 compressões por mês; tamanho máx. arquivo 15 MB.
+- Plugins: até 2-3 plugins inclusos (ex.: Illustrator + próximo plugin), demais como add-on.
+- Usuários: 1.
+- Suporte: melhorado (prioridade em e-mail/chat), tempo de resposta menor.
+- Beta access: sim (novas ferramentas/plugins).
+
+MBuddy Team (R$ 149,90/mês)
+- MClients: até 200 clientes, 200 follow-throughs/briefings ativos, 200 aprovações pendentes; anexos/documentos mais liberados.
+- ColorBuddy: até 2.000 extrações/gerações de paleta por mês.
+- ImageBuddy: até 2.000 compressões por mês; tamanho máx. arquivo 30 MB.
+- Plugins: todos os plugins disponíveis incluídos no plano.
+- Usuários: até 5 usuários (assentos); assentos extras podem ser add-on.
+- Suporte: dedicado/prioritário (SLA melhor, canal prioritário).
+- Beta access: sim (pleno).
+
+Notas e alavancas para ajuste
+- Limites são propostos para diferenciação; podem ser calibrados conforme uso real/monitoramento.
+- Assentos extras, plugins adicionais e limites maiores podem ser vendidos como add-ons.
+- Se houver saturação no Team, considerar elevar preço ou criar faixas maiores (ex.: Team+).
+
+

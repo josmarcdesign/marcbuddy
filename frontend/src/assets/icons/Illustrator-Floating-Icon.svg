@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 159.41 159.41">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-5 {
+        fill: url(#Gradiente_sem_nome_32);
+      }
+
+      .cls-3 {
+        fill: #95ba22;
+      }
+
+      .cls-6 {
+        fill: #9bba17;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        stroke-width: .5px;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <linearGradient id="Gradiente_sem_nome_32" data-name="Gradiente sem nome 32" x1="7.82" y1="7.82" x2="143.18" y2="143.18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a8db2c"/>
+      <stop offset="1" stop-color="#a3bf00"/>
+    </linearGradient>
+    <clipPath id="clippath">
+      <rect class="cls-2" x=".5" y=".5" width="150" height="150" rx="25" ry="25"/>
+    </clipPath>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g id="Illustrator-Floating-Icon">
+      <rect class="cls-3" x="8.91" y="8.91" width="150" height="150" rx="25" ry="25"/>
+      <g>
+        <rect class="cls-5" x=".5" y=".5" width="150" height="150" rx="25" ry="25"/>
+        <g class="cls-7">
+          <path class="cls-6" d="M150.5,49.06c-.92,8.23-6.02,45.94-39.43,74.34-31.73,26.98-67.47,27.27-76.24,27.09-1.88.63-7.56,2.8-11.3,8.71-5.66,8.95-1.91,18.62-1.46,19.54,3.04,6.19,8.84,10.7,15.19,13.39,6.35,2.68,13.27,3.71,20.13,4.41,24.05,2.44,48.48,1.04,72.09-4.13,16.12-3.53,32.84-9.48,42.95-22.53,10.73-13.86,11.78-32.66,12.38-50.18.55-15.93,2.09-23.82-.69-33.05-6.5-21.62-25.44-33.24-33.61-37.59Z"/>
+        </g>
+        <rect class="cls-1" x=".5" y=".5" width="150" height="150" rx="25" ry="25"/>
+      </g>
+      <g id="Icon">
+        <path id="Ai" class="cls-4" d="M75.86,97.39h-21.46l-3.73,12.14h-16.73l23.82-64.97h14.73l23.99,64.97h-16.81l-3.82-12.14ZM58.16,85.3h13.96l-7.01-22.54-6.95,22.54ZM100.42,48.8c0-2.14.77-3.9,2.31-5.27s3.56-2.05,6.01-2.05,4.47.68,6.01,2.05,2.31,3.13,2.31,5.27-.77,3.9-2.31,5.27-3.56,2.05-6.01,2.05-4.47-.68-6.01-2.05-2.31-3.13-2.31-5.27ZM116.38,109.52h-15.07v-48.27h15.07v48.27Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

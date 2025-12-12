@@ -1,0 +1,38 @@
+MARCBUDDY – ARQUITETURA BASE (LEGADO/CORE)
+Especificações das Ferramentas Web e Fluxos de Usuário
+
+1. ESPECIFICAÇÃO DAS FERRAMENTAS WEB
+1.1 Renomeador em Lote
+- Funcionalidade: Upload múltiplo, aplicar padrões (Prefixo, Sufixo, Substituir Texto, Sequência Numérica).
+- Processamento: Client-side (se possível) ou Server-side via Node Streams.
+
+1.2 Extrator de Cores
+- Input: Upload de imagem (JPG/PNG/WebP).
+- Output: Paleta de 5-8 cores dominantes com códigos HEX e RGB copiáveis.
+
+1.3 Compressor de Imagens
+- Funcionalidade: Redução de peso sem perda visível de qualidade.
+- Bibliotecas sugeridas: Sharp, ImageMagick.
+
+2. FLUXO DE USUÁRIO (USER JOURNEY)
+1. Landing Page -> 2. Cadastro (Trial 3-7 dias) -> 3. Dashboard (Gratuito) -> 4. Upgrade para Pago -> 5. Download Plugin -> 6. Ativação via Key.
+
+3. SCHEMA DO BANCO DE DADOS (CORE)
+
+[Tabela: users]
+- id (UUID), email (UNIQUE), password_hash, created_at.
+
+[Tabela: subscriptions]
+- id, user_id, plan ('free','basic','complete','team'), status ('active','suspended'), expires_at, auto_renew.
+
+[Tabela: license_keys]
+- id, subscription_id, key_value (UNIQUE), plugin_type ('illustrator','photoshop','figma'), valid_until, usage_count.
+
+[Tabela: content]
+- id, title, type ('tutorial','brush','template'), file_url, plan_restriction, downloads_count.
+
+4. ENDPOINTS CORE
+- POST /auth/register
+- POST /auth/login
+- POST /validate-key (Validação crítica para os plugins desktop)
+- GET /tools/process (Para ferramentas web)

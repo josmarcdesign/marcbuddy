@@ -1,0 +1,163 @@
+PLATAFORMA MARCBUDDY - VISÃO GERAL (SaaS)
+=========================================
+
+Objetivo
+- Plataforma SaaS para designers/agências centralizarem ferramentas, plugins e gestão de clientes (mclients), assinaturas e pagamentos.
+
+Arquitetura Geral
+- Frontend: React/Vite, SPA, rotas protegidas, temas e identidade própria.
+- Backend: Node/Express (porta 3001), API REST, JWT auth.
+- Banco: PostgreSQL (originalmente Supabase; planejamento para Hostinger com schemas `public` e um schema por ferramenta, ex. `mclients`).
+- Build/Deploy Frontend: build estático (`npm run build`) → `dist/` com `base: './'`.
+- Backend precisa rodar em VPS/serviço Node; frontend pode ser estático em CDN/FTP.
+
+Autenticação e Autorização
+- JWT emitido pelo backend.
+- Rotas protegidas com `ProtectedRoute` no frontend.
+- Roles: `user`, `admin` (painel admin).
+
+Domínios e Rotas Principais (Frontend)
+- Público: `/`, `/home`, `/benefits`, `/plans`, `/resources/*`, `/docs`, `/faq`, `/privacidade`, `/termos`, `/reembolso`.
+- Auth: `/login`, `/register`.
+- Dashboard protegido: `/dashboard`, `/settings`.
+- Pagamentos: `/plans/:planId/payment` (ou checkout), `/plans/:planId/checkout`.
+- Ferramentas: `/ferramentas` (listagem) e ferramentas específicas (ColorBuddy, ImageBuddy, MClients, etc.).
+- Admin: `/admin` (painel), `/admin/payments`.
+- Plugins: `/plugins` (lista de plugins; card do Adobe Illustrator).
+
+Planos e Preços (frontend)
+- Plano Basic: inclui “Todos os plugins”, Ferramentas web, chats básicos, WhatsApp Pro. (Valores não hardcoded; conferir API/plans).
+- Plano Premium: inclui todos os plugins, ferramentas web, chat completo, WhatsApp Pro, beta access.
+- Plano Enterprise: inclui premium + até 5 usuários (multiusuário) e benefícios ampliados.
+- Planos exibidos em `/plans`; checkout em `/plans/:planId/checkout` e `/plans/:planId/payment`.
+
+Ferramentas disponíveis (exibidas em `/ferramentas`)
+- ColorBuddy
+  - Extrator de paletas a partir de imagens/cores.
+  - Gerador de paletas e presets de marca.
+  - Útil para branding e guias rápidos.
+- ImageBuddy
+  - Compressão/otimização de imagens.
+  - Possível suporte a formatos comuns (png/jpg) e opções de qualidade.
+- MClients (core B2B de clientes/projetos)
+  - Gestão de clientes (mclients_clients).
+  - Follow-throughs e modelos (briefings, formulários, tokens/links).
+  - Demandas, tarefas, pagamentos, documentos, aprovações pendentes.
+  - Registro de tempo (time_entries) e atividades.
+- Outros slots
+  - Espaço para novas ferramentas; catálogo exibido na página de ferramentas.
+
+Plugins
+- Página `/plugins`: card do plugin Adobe Illustrator (status beta; CTA download em breve). Novos plugins podem ser adicionados.
+
+Planos (nomes, valores e período)
+- Grátis (trial): R$ 0,00 por 7 dias (degustação)
+- MBuddy Classic (basic): R$ 29,90/mês
+- MBuddy Pro (premium): R$ 59,90/mês
+- MBuddy Team (enterprise): R$ 149,90/mês
+
+Critérios de valor por plano (referência)
+- Grátis (trial 7d): degustação com limites bem reduzidos nas ferramentas e sem plugins premium; após 7 dias, exige upgrade.
+- Classic: acesso a plugins básicos, ferramentas web, suporte básico; limites de uso menores.
+- Pro: tudo do Classic + chat completo, beta access, limites maiores, suporte melhorado.
+- Team: multiusuário (até 5), limites elevados, suporte dedicado/concierge, plugins completos, acesso a betas.
+- Alavancas: nº de usuários (assentos), limites por ferramenta (compressões, extrações, clientes/briefings), plugins incluídos, suporte/SLA.
+
+Sugestão de limites (exemplo para cálculo de valor)
+- ColorBuddy: extratores/geradores por mês — Basic baixo, Premium médio, Enterprise alto/ilimitado.
+- ImageBuddy: compressões por mês e tamanho máximo de arquivo — Basic menor, Premium médio, Enterprise maior.
+- MClients: clientes ativos, follow-throughs/briefings ativos, aprovações pendentes, anexos/documentos (quota de storage se aplicável).
+- Plugins: acesso incluso a 1 plugin no Basic, 2-3 no Premium, todos no Enterprise (conforme catálogo crescer).
+
+Módulo mclients — detalhes funcionais
+- follow_through_models: modelos de briefing com steps (json), external_id (UUID).
+- follow_throughs: instâncias para clientes, com token + briefing_url, external_id; status e vinculação a modelo/cliente.
+- pending_approvals: payload do briefing, status (pending|approved|rejected); ao aprovar, cria cliente/demanda; não cria cliente no submit.
+- clients/demands/tasks/payments/documents/services/time_entries/activities: gestão operacional do cliente e projetos; IDs relacionais entre schemas.
+- Regras críticas:
+  - Salvar sempre briefing_url em follow_through.
+  - Usar external_id (UUID) para sincronização.
+  - Filtrar pendingApprovals sem followThroughId válido para evitar FK.
+  - Não criar cliente automaticamente no submitBriefing; só na aprovação.
+
+Banco e Schemas (detalhado)
+- `public`: users, subscriptions, plans, payment_methods, coupons, coupon_usage, payments.
+- Schema por ferramenta (obrigatório):
+  - `mclients` já mapeado com 12 tabelas relacionais e FKs para public.users.
+  - Futuras ferramentas podem ter schemas dedicados (ex.: `colorbuddy`, `imagebuddy`) com tabelas prefixadas e FKs para public.users.
+- IDs: UUID para external_id/tokens; SERIAL/IDENTITY para IDs internos; índices em FKs, status, emails, codes.
+
+APIs Backend (principais) — visão de valor
+- Auth: login, register, me, refresh (token), forgot/reset password.
+- Users/Admin: CRUD, stats admin.
+- Plans/Subscriptions: criação, assinatura ativa, cancelamento, license key (se aplicável).
+- Coupons: CRUD, uso.
+- Payment/methods: confirmação, métodos disponíveis.
+- MClients: follow-through, modelos, clientes, demandas, tarefas, pagamentos, aprovações pendentes, atividades, time entries.
+
+Critérios de upgrade de planos (sinalização)
+- Liberar plugins adicionais.
+- Elevar limites de uso de ferramentas.
+- Aumentar número de usuários (assentos).
+- Prioridade de suporte/SLA.
+- Acesso a betas/novas ferramentas.
+
+Navegação e Layout
+- `Navbar` com links Benefícios, Ferramentas, Plugins, Planos, Recursos e login/logout.
+- `Layout` aplica Navbar, Footer/DashboardFooter conforme rota.
+- `AdminWidget` global aparece em todas as páginas.
+- Busca sincronizada para página de ferramentas via evento `toolsSearchChange`.
+
+Páginas/Seções de Destaque
+- Home: hero, benefícios, animação AnimatedBar (cards de valor), seções de produtos.
+- Plans: planos com benefícios (`basic`, `premium`, `enterprise`).
+- Payment/Checkout: fluxo de pagamento (Pix/assinatura).
+- Dashboard: visão de assinatura ativa, ferramentas disponíveis, plugins.
+- Plugins: card do plugin Adobe Illustrator (status beta; CTA download em breve).
+- Admin Panel: abas overview, subscriptions, plans, coupons, payments, tools, users, design, design-assets.
+
+Módulo mclients (schema dedicado)
+- Tabelas: `mclients_clients`, `mclients_follow_through_models`, `mclients_follow_throughs`, `mclients_demands`, `mclients_payments`, `mclients_documents`, `mclients_services`, `mclients_tasks`, `mclients_pending_approvals`, `mclients_time_entries`, `mclients_activities`, `mclients_briefing_submissions`.
+- Fluxo: briefing cria aprovação pendente; admin aprova → cria cliente/demanda; rejeita → não cria cliente.
+- Regras críticas: manter `briefing_url` no follow-through, `external_id` (UUID), filtrar pendingApprovals inválidos, não criar cliente automático no submitBriefing.
+
+Banco e Schemas
+- `public`: users, subscriptions, plans, payment_methods, coupons, coupon_usage, payments (assinaturas/pagamentos gerais).
+- Schema por ferramenta (obrigatório): ex. `mclients` com tabelas próprias; futuras ferramentas podem ter schemas dedicados (`colorbuddy`, `imagebuddy`).
+- IDs: UUID para `external_id`/tokens; SERIAL/IDENTITY para IDs internos.
+
+APIs Backend (principais)
+- Auth: login, register, me.
+- Users/Admin: CRUD e stats admin.
+- Plans/Subscriptions: criação, listagem, assinatura ativa, cancelamento.
+- Coupons: CRUD, uso.
+- Payment/Payment methods: confirmação, métodos disponíveis.
+- MClients: follow-through, modelos, clientes, demandas, tarefas, pagamentos, aprovações pendentes, atividades.
+
+Dependências e Build
+- Frontend: React 18, react-router-dom 6, axios, tailwind, lucide-react, react-query, styled-components, gsap, tesseract.js (algumas tools), fonts locais Nunito/Poppins.
+- Backend: express, pg, bcryptjs, jsonwebtoken, multer, cors, express-validator.
+- Build frontend: `npm run build` → `dist`; `base: './'` para FTP/CDN; assets em `dist/assets`.
+
+Performance (recentes ajustes)
+- `base: './'` no Vite para servir estático.
+- Fontes com `font-display: swap`; removido preload no `index.html`.
+- AnimatedBar mobile: cards tamanho fixo, texto menor, velocidades unificadas (32s).
+
+Boas Práticas de Deploy
+- Frontend: subir `dist/` completo (não usar `/src` ou `index.html` de dev). Garantir headers de cache e compressão.
+- Backend: rodar em VPS/Node (PM2/NGINX), configurar `.env` com DB e JWT. Porta padrão 3001.
+- CORS/HTTPS: habilitar HTTPS e CORS apenas para domínios do app.
+
+Credenciais de Teste (admin)
+- Email: josmarcdesign@gmail.com
+- Senha: 12345
+
+Notas sobre Realtime
+- Realtime Supabase removido do frontend e backend; dependências e scripts de publicação retirados.
+
+Arquivos de Documentação no Repo
+- `docs/hostinger-db-migration.md`: plano para migrar Supabase → Hostinger.
+- `docs/new-db-requirements.md`: requisitos do novo banco (schemas por ferramenta).
+- Este arquivo: `docs/plataforma-overview.txt`.
+

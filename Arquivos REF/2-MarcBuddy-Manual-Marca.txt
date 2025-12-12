@@ -1,0 +1,53 @@
+MARCBUDDY – MANUAL DE IDENTIDADE VISUAL E DESIGN SYSTEM
+
+1. FUNDAMENTOS
+- Propósito: "Eliminar o atrito do fluxo de trabalho criativo."
+- Arquétipo: O Amigo Especialista (Empático, Encorajador, Descomplicado).
+- Slogan: "O seu parceiro criativo. Ferramentas essenciais para designers."
+
+2. PALETA DE CORES (TOKENS OBRIGATÓRIOS)
+Use exatamente estes códigos hexadecimais:
+
+[Primárias]
+- Verde Vibrante (Action Green): #87c508
+  *Uso: Botões, CTAs, Links, Destaques.*
+- Azul Marinho (Trust Blue): #011526
+  *Uso: Backgrounds principais, Títulos, Sidebar.*
+- Off-White (Clean White): #F5F5F5
+  *Uso: Background de Cards, Inputs, Áreas de conteúdo.*
+
+[Paleta Estendida - Cinzas]
+- Gray-100: #EBEBEB (Bordas leves)
+- Gray-300: #C4C4C4 (Divisores)
+- Gray-500: #7A7A7A (Texto secundário)
+- Gray-700: #3A3A3A (Texto primário alternativo)
+
+[Cores de Status]
+- Success: #10B981 (Ativo, Confirmado)
+- Warning: #F59E0B (Atenção, Expirando)
+- Error: #EF4444 (Erro, Bloqueado)
+- Info: #3B82F6 (Dicas)
+
+3. TIPOGRAFIA
+[Família Primária: Nunito]
+- Estilo: Arredondada (Rounded Sans).
+- Pesos: 700 (Bold) para H1/H2; 600 (SemiBold) para H3 e Botões.
+- Aplicação: Títulos, Slogans, Badges.
+
+[Família Secundária: Poppins]
+- Estilo: Geométrica (Geometric Sans).
+- Pesos: 400 (Regular) para corpo; 500 (Medium) para labels.
+- Aplicação: Parágrafos, Descrições, Menus.
+
+[Família Técnica: JetBrains Mono]
+- Aplicação: License Keys, Blocos de Código.
+
+4. COMPONENTES DE UI (GUIA DE ESTILO)
+- Mascote (Buddy): Estilo linha única. Expressões: Feliz (Sucesso), Pensativo (Loading), Confuso (Erro 404).
+- Botões: Background Verde Vibrante (#87c508), Texto Branco ou Off-White. Borda arredondada (Rounded-md ou lg).
+- Cards: Background Off-White (#F5F5F5), Borda fina (#EBEBEB), Sombra suave.
+- Acessibilidade: Texto sobre Verde deve ser Azul Marinho ou Preto. Texto sobre Azul deve ser Branco.
+
+5. REGRAS DE APLICAÇÃO
+- Logo: "Buddy Mark" (M+B em linha contínua). Margem de segurança de 25%.
+- Proibições: Não distorcer o logo, não usar sombras pesadas, não usar cores fora da paleta.

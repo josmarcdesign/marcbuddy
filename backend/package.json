@@ -1,0 +1,63 @@
+{
+  "name": "marcbuddy-backend",
+  "version": "1.0.0",
+  "description": "Backend API para plataforma SaaS MarcBuddy",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "migrate": "node src/database/migrate.js",
+    "migrate:v2": "node src/database/migrate-v2.js",
+    "migrate:v3": "node src/database/migrate-v3.js",
+    "migrate:v4": "node src/database/migrate-v4.js",
+    "migrate:v5": "node src/database/migrate-v5.js",
+    "migrate:v6": "node src/database/migrate-v6.js",
+    "migrate:v7": "node src/database/migrate-v7.js",
+    "migrate:v8": "node src/database/migrate-v8.js",
+    "migrate:v9": "node src/database/migrate-v9.js",
+    "migrate:v10": "node src/database/migrate-v10.js",
+    "migrate:v11": "node src/database/migrate-v11.js",
+    "migrate:v12": "node src/database/migrate-v12.js",
+    "migrate:v13": "node src/database/migrate-v13.js",
+    "migrate:v14": "node src/database/migrate-v14-rls.js",
+    "migrate:v17": "node src/database/migrate-v17-schema-mclients.js",
+    "migrate:v18": "node src/database/migrate-v18-email-templates.js",
+    "migrate:v19": "node src/database/migrate-v19-add-stepform-to-models.js",
+    "migrate:v20": "node src/database/migrate-v20-stripe.js",
+    "migrate:all": "node src/database/migrate-all.js",
+    "create-admin": "node scripts/create-admin-user.js",
+    "reset-users": "node scripts/reset-users.js",
+    "set-admin": "node scripts/set-admin.js",
+    "test-db": "node scripts/test-connection.js",
+    "test-supabase": "node scripts/test-supabase-connection.js",
+    "update-subscriptions": "node scripts/update-subscriptions-table.js",
+    "sync-emails": "node scripts/sync-subscription-emails.js"
+  },
+  "keywords": [
+    "saas",
+    "api",
+    "marcbuddy"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.11",
+    "pg": "^8.11.3",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.5",
+    "stripe": "^20.0.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

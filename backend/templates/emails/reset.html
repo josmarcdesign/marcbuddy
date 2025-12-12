@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redefinir Senha</title>
+  <style>
+    body { font-family: 'Nunito', Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+    .container { max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background: linear-gradient(135deg, #1f2937 0%, #374151 100%); color: white; padding: 40px 30px; text-align: center; }
+    .header h1 { margin: 0; font-size: 28px; font-weight: 800; }
+    .content { padding: 40px 30px; color: #374151; line-height: 1.6; }
+    .content h2 { color: #1f2937; margin-top: 0; font-size: 24px; font-weight: 700; }
+    .button { display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 20px 0; box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2); }
+    .button:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3); }
+    .security { background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 20px; margin: 20px 0; }
+    .security h3 { color: #991b1b; margin-top: 0; }
+    .footer { background-color: #f9fafb; padding: 30px; text-align: center; color: #6b7280; font-size: 14px; border-top: 1px solid #e5e7eb; }
+    .footer a { color: #ef4444; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔐 MarcBuddy</h1>
+    </div>
+    <div class="content">
+      <h2>Redefinir Senha</h2>
+      <p>Olá {{user_name}}!</p>
+      <p>Recebemos uma solicitação para redefinir a senha da sua conta na <strong>MarcBuddy</strong>.</p>
+
+      <div class="security">
+        <h3>🛡️ Segurança</h3>
+        <p>Se você não solicitou esta alteração, ignore este email. Sua senha permanecerá a mesma.</p>
+        <p>Este link é válido por <strong>1 hora</strong> por questões de segurança.</p>
+      </div>
+
+      <p style="text-align: center;">
+        <a href="{{reset_url}}" class="button">Redefinir Senha</a>
+      </p>
+
+      <p><strong>Não consegue clicar no botão?</strong> Copie e cole este link no seu navegador:</p>
+      <p style="word-break: break-all; background-color: #f3f4f6; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">{{reset_url}}</p>
+
+      <p>Após redefinir sua senha, você poderá continuar usando todas as ferramentas da MarcBuddy normalmente.</p>
+
+      <p>Atenciosamente,<br>
+      <strong>Equipe MarcBuddy</strong></p>
+    </div>
+    <div class="footer">
+      <p>© 2024 MarcBuddy. Todos os direitos reservados.</p>
+      <p><a href="{{support_url}}">Suporte</a> | <a href="{{privacy_url}}">Política de Privacidade</a></p>
+    </div>
+  </div>
+</body>
+</html>

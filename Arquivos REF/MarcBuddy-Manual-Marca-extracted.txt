@@ -1,0 +1,660 @@
+Este manual é o guia definitivo para a identidade da marca MarcBuddy. Ele foi cuidadosamente
+elaborado para garantir que todos os elementos visuais, verbais e de comunicação da marca sejam
+aplicados de forma consistente em todos os pontos de contato com o cliente, construindo uma marca
+forte, coesa, memorável e profissional.
+Cada seção deste manual fornece diretrizes precisas sobre como usar, reproduzir e aplicar os
+elementos da marca. Conformidade com estas diretrizes é essencial para manter a integridade da
+marca.
+MarcBuddy não é apenas uma ferramenta. É um parceiro criativo que entende os desafios únicos
+de designers e profissionais criativos.
+Propósito Principal:
+Eliminar o atrito do fluxo de trabalho, permitindo que criatividade flua sem interrupções.
+Posicionamento:
+MarcBuddy capacita designers a focarem no que realmente importa: a criação. Não substitui o
+designer; empodera-o, facilitando a execução de tarefas complexas e repetitivas.
+Promessa de Marca:
+"Seu fluxo de trabalho criativo, potencializado por ferramentas inteligentes."
+"O seu parceiro criativo. Ferramentas essenciais para designers. Otimizando seu fluxo de
+trabalho."
+Este slogan encapsula a proposta de valor tríplice:
+Manual de Marca MarcBuddy
+Guia Completo de Identidade Visual e Comunicação
+Prefácio
+PARTE 1: FUNDAMENTOS DA MARCA
+1. O Conceito da Marca
+1.1 Essência e Propósito
+1.2 Slogan Oficial
+1. Parceria – Relação humana e de confiança
+2. Essencialidade – Não é supérfluo; é necessário
+3. Otimização – Resultado palpável: tempo economizado
+
+-- 1 of 19 --
+
+Valor 	Definição 	Aplicação
+Empatia 	Entender as dores do designer 	Comunicação acessível, suporte humanizado
+Excelência 	Ferramentas de qualidade premium 	Produto polido, sem bugs, performático
+Inovação 	Estar à frente das tendências 	Novos plugins, recursos beta, feedback loops
+Transparência Clareza nos preços, políticas e atualizações Comunicação honesta, changelog detalhado
+Comunidade 	Conectar criativos entre si 	Newsletter, comentários, recursos compartilhados
+Personalidade da Marca: Um amigo especialista – alguém que você confia, que sabe do assunto e
+que te ajuda com entusiasmo.
+Características da Voz:
+Exemplos de Tom em Diferentes Contextos:
+Contexto 	Exemplo
+Erro de usuário "Oops! Parece que a chave expirou. Sem problemas, renove seu plano aqui."
+Sucesso 	"Uau! Você extraiu uma paleta incrível dessa imagem!"
+Suporte 	"Estou aqui para ajudar! Qual é o seu desafio?"
+Newsletter 	"Olá! Veja as 3 maiores tendências de design esta semana..."
+Admin 	"Relatório de dezembro consolidado. Ver detalhes"
+"Dê aos seus designers as ferramentas que eles precisam para criar melhor e mais rápido."
+1.3 Valores de Marca
+1.4 Voz e Tom da Marca
+Empática – Entende seus desafios; não é robótica
+Encorajadora – Inspira confiança; celebra sucessos
+Descomplicada – Explica sem jargão; acessível para todos
+Profissional – Mantém credibilidade; não é amadora
+Humana – Usa linguagem natural; ocasionalmente informal
+2. Promessa e Diferenciadores
+2.1 Promessa de Marca
+
+-- 2 of 19 --
+
+Conceito:
+O logo é um símbolo minimalista de linha única e contínua que une as letras "M" e "B" em um formato
+amigável. O design é profissional, mas com um sorriso sutil, tornando-o acessível e memorável.
+Elementos:
+Uso:
+Versões do Logo:
+Versão 	Uso
+Logo Horizontal 	Websites, cabeçalhos, apresentações
+Logo Quadrado 	Favicon, ícones, avatares
+Logo com Tipografia 	Marketing, print, apresentações formais
+Logo Monocromático Preto 	Documentos impressos, assinaturas de email
+Logo Monocromático Branco Fundos escuros, overlays
+2.2 Diferenciadores Competitivos
+1. Integração Profunda – Plugins nativos que vivem dentro do Adobe/Figma, não fora
+2. Ferramentas Web Gratuitas – Utilidade imediata sem paywall
+3. Comunidade Criativa – Newsletter + conteúdo + comentários (não apenas softwares)
+4. Plano para Times – Suporte a equipes com controle de acesso
+5. Suporte Premium – Respostas rápidas do amigo especialista
+6. Precificação Justa – Baseada em valor; sem surpresas
+PARTE 2: IDENTIDADE VISUAL
+3. Sistema de Logo
+3.1 O Buddy Mark (Logo Principal)
+Linha única contínua (sem preenchimento)
+Raio de curvatura suave (estilo arredondado)
+Sorriso sutil implícito no design
+Proporções quadradas (adaptável)
+Como marca de website
+Como favicon
+Como ícone em redes sociais
+Como watermark em conteúdo
+
+-- 3 of 19 --
+
+O logo deve ter sempre um espaço livre mínimo ao redor para garantir legibilidade e impacto visual.
+Regra: O espaço mínimo é equivalente a 25% do tamanho da altura do logo.
+┌─────────────────────────────┐
+│ 	│
+│ 	[Clearspace min] 	│
+│ 	│
+│ 	┌──────────────────┐ 	│
+│ 	│ 	│ 	│
+│ 	│ M B Logo 	│ 	│
+│ 	│ 	│ 	│
+│ 	└──────────────────┘ 	│
+│ 	│
+│ 	[Clearspace min] 	│
+│ 	│
+└─────────────────────────────┘
+Nunca:
+Sempre:
+3.2 Espaçamento Mínimo (Clearspace)
+3.3 Redimensionamento
+Tamanho Mínimo: 32px (tela), 10mm (print)
+Tamanho Máximo: Sem limite, mas manter proporções
+Escala: Sempre manter proporções 1:1
+❌ Distorcer ou esticar o logo
+❌ Comprimir ou condensar
+❌ Rotacionar (exceto ícone que pode ter pequenas rotações contextuais)
+❌ Adicionar efeitos (sombra, reflexo) sem documentação
+❌ Usar versão de baixa resolução
+✅ Usar SVG para web (escalável)
+✅ Usar PNG 300dpi para print
+✅ Fornecer espaço livre
+✅ Testar legibilidade em múltiplos tamanhos
+4. Paleta de Cores
+
+-- 4 of 19 --
+
+Nome 	Hex 	RGB 	Uso
+Gray-100 #EBEBEB 235, 235, 235 Borders leves
+Gray-300 #C4C4C4 	196, 196, 196 Dividers, separadores
+Gray-500 #7A7A7A 	122, 122, 122 Texto secundário
+Gray-700 #3A3A3A 	58, 58, 58 	Texto primário (alt)
+4.1 Cores Primárias
+Verde Vibrante (Action Green)
+Hex: #87c508
+RGB: 135, 197, 8
+CMYK: 32%, 0%, 95%, 23%
+HSL: 74°, 96%, 40%
+Uso: CTAs, botões primários, destaque, ação
+Azul Marinho (Trust Blue)
+Hex: #011526
+RGB: 1, 21, 38
+CMYK: 97%, 45%, 0%, 85%
+HSL: 209°, 95%, 8%
+Uso: Fundo principal, textos primários, cabeçalhos
+Off-White (Clean White)
+Hex: #F5F5F5
+RGB: 245, 245, 245
+CMYK: 0%, 0%, 0%, 4%
+HSL: 0°, 0%, 96%
+Uso: Superfícies secundárias, contraste, clareza
+4.2 Paleta Estendida
+Cinzas Neutros (Accessibility)
+
+-- 5 of 19 --
+
+Status 	Hex 	RGB 	Uso
+Success #10B981 	16, 185, 129 Confirmação, ativo
+Warning 	#F59E0B 245, 158, 11 Alerta, atenção
+Error 	#EF4444 	239, 68, 68 	Erro, bloqueio
+Info 	#3B82F6 	59, 130, 246 Informação, dica
+Recomendações de Contraste (WCAG AA):
+Exemplo de Hierarquia Visual:
+┌─────────────────────────────────────┐
+│ AZUL MARINHO (Fundo) 	│
+├─────────────────────────────────────┤
+│ 	│
+│ ▓▓▓ Off-White (Card) 	│
+│ ▒▒▒ 	│
+│ Azul Marinho (Título) 	│
+│ Gray-500 (Descrição) 	│
+│ 	│
+│ ┌─────────────────┐ 	│
+│ │ VERDE VIBRANTE │ (Botão CTA) │
+│ │ (Off-White text)│ 	│
+│ └─────────────────┘ 	│
+│ 	│
+└─────────────────────────────────────┘
+Uso: Títulos, slogans, CTAs, destaques
+Características:
+Cores de Status
+4.3 Aplicação de Cores
+Texto sobre verde vibrante: Preto ou Azul Marinho
+Texto sobre azul marinho: Off-white ou verde vibrante
+Texto sobre off-white: Azul marinho ou gray-700
+5. Tipografia
+5.1 Fonte Principal: Nunito
+Família: Sans-serif
+Estilo: Geométrica, arredondada, amigável
+Pesos disponíveis: 300 (Light), 400 (Regular), 600 (SemiBold), 700 (Bold)
+Licença: Open Source (Google Fonts)
+
+-- 6 of 19 --
+
+Quando usar Nunito:
+Exemplo de Hierarquia com Nunito:
+H1 (Nunito 700, 48px): MarcBuddy – O seu parceiro criativo
+H2 (Nunito 600, 32px): Ferramentas Essenciais para Designers
+H3 (Nunito 600, 24px): Plugins Profissionais
+Body text (Nunito 400, 16px): [descrição em Poppins]
+Uso: Corpo de texto, descrições, parágrafos, dados
+Características:
+Quando usar Poppins:
+Tamanhos Recomendados:
+Elemento Tamanho Peso Linha 	Uso
+Body 	16px 	400 	1.5 	Padrão
+Small 	14px 	400 	1.4 	Labels, hints
+Caption 	12px 	400 	1.3 	Footnotes
+Label 	14px 	600 	1.5 	Form labels
+H1, H2, H3 (títulos)
+Slogans e taglines
+Botões e CTAs
+Destaque em cards
+Headlines de newsletter
+5.2 Fonte Secundária: Poppins
+Família: Sans-serif
+Estilo: Geométrica, moderna, legível
+Pesos disponíveis: 300, 400, 500, 600, 700
+Licença: Open Source (Google Fonts)
+Parágrafos e corpo
+Labels e descrições
+Valores e dados numéricos
+Textos de suporte
+Emails e newsletters
+
+-- 7 of 19 --
+
+Uso: Código, license keys, valores técnicos
+Exemplo:
+License Key: MBK-X7K9-P2Q8-R5T6-U9V0
+Comando: npm install marcbuddy-plugin
+Nome: Buddy (ou "Marc" é o nome completo: Marc Buddy)
+Personalidade:
+Estilo Visual:
+Expressão 	Uso
+Feliz/Sorridente Sucesso, conclusão, celebração
+Pensativo 	Processando, carregando, pensando
+Confuso 	Erro, problema, necessidade de ajuda
+Entusiasmado 	Novo recurso, melhoria, novidade
+Neutro 	Onboarding, instruções, documentação
+5.3 Fonte Monoespacial: JetBrains Mono
+6. O Mascote
+6.1 Conceito e Personalidade
+Amigável e acessível
+Inteligente e confiável
+Energético mas profissional
+Sempre pronto para ajudar
+Linha única e contínua (similar ao logo)
+Cantos arredondados
+Expressões simples mas emotivas
+Sem preenchimento complexo (minimalista)
+6.2 Expressões e Usos
+
+-- 8 of 19 --
+
+Exemplo de Uso em Erro:
+╔════════════════════════════════╗
+║ Oops! Algo deu errado... 	║
+║ 	║
+║ [Mascote confuso] 	║
+║ 	║
+║ Sua chave expirou :( 	║
+║ [Renovar agora] [Suporte] 	║
+╚════════════════════════════════╝
+Estrutura Visual:
+┌────────────────────────────────────────┐
+│ HEADER (Azul Marinho) 	│
+│ Logo | Nav | [Login] [Começar Grátis] │
+├────────────────────────────────────────┤
+│ HERO (Gradiente: Azul → Off-white) 	│
+│ "O seu parceiro criativo" 	│
+│ [CTA Verde Vibrante] 	│
+├────────────────────────────────────────┤
+│ CARDS (Off-white com bordas cinzas) │
+│ Benefícios / Plugins / Ferramentas 	│
+├────────────────────────────────────────┤
+│ PRICING (Verde Vibrante destacado) 	│
+│ Cards de planos com CTA 	│
+├────────────────────────────────────────┤
+│ TESTIMONIALS (Avatares + Quote) 	│
+├────────────────────────────────────────┤
+│ FOOTER (Azul Marinho) 	│
+│ Links | Social | Newsletter 	│
+└────────────────────────────────────────┘
+6.3 Aplicações do Mascote
+Onboarding: Guiar usuários pelo processo de signup
+Checkout: Próximo ao botão de confirmar pagamento
+Erro 404: Mascote confuso com mensagem amigável
+Success Page: Mascote feliz celebrando conversão
+Email Marketing: Assinatura com mascote
+Suporte: Avatar do chatbot de suporte
+PARTE 3: APLICAÇÕES DA MARCA
+7. Aplicações Digitais
+7.1 Website Principal
+
+-- 9 of 19 --
+
+Paleta por Seção:
+Componentes:
+Componente 	Cor Primária 	Cor Secundária
+Sidebar 	Azul Marinho 	Gray-100 border
+Topbar 	Off-white 	Gray-300 border
+Cards 	Off-white 	Gray-100 border
+Botões Primários 	Verde Vibrante 	Branco texto
+Botões Secundários Gray-300 bg 	Azul Marinho texto
+Links 	Verde Vibrante 	Underline ao hover
+Inputs 	Off-white bg 	Gray-300 border
+Status (ativo) 	Success green (#10B981) –
+Status (inativo) 	Gray-500 	–
+Bio:
+  Ferramentas criativas para designers
+✨ Plugins + Web Tools + Comunidade
+  Newsletter semanal
+  marcbuddy.com
+Visual do Feed:
+Padrão xadrez das cores da marca (alternando Verde Vibrante, Azul Marinho, Off-white) com
+conteúdo educativo, dicas rápidas, anúncios de novos recursos.
+Exemplo de Post:
+Header/Footer: Azul Marinho + Off-white
+Hero: Gradiente suave (Azul Marinho → Off-white)
+Cards: Off-white com bordas Gray-100
+CTAs: Verde Vibrante com hover mais escuro
+Acento: Verde Vibrante para destaques
+7.2 Aplicação Web (Dashboard)
+7.3 Redes Sociais
+Instagram
+
+-- 10 of 19 --
+
+┌─────────────────────────────────┐
+│ Verde Vibrante (fundo) 	│
+│ 	│
+│ "Extraia cores de imagens 	│
+│ em segundos com MarcBuddy" │
+│ 	│
+│ [Imagem de exemplo] 	│
+│ 	│
+│ [CTA: Link na bio] 	│
+└─────────────────────────────────┘
+Caption (Poppins): "Você já se viu perdendo tempo extraindo cores manualmente? Não mais!
+Hashtags: #Design #Ferramenta #Designer #MarcBuddy #ProFit #CreativeTools
+Bio:
+MarcBuddy – Ferramentas essenciais para designers
+Ajudando designers a trabalhar mais rápido e criar melhor. Plugins para Adobe e Figma, fe
+Conteúdo:
+Template Base:
+┌─────────────────────────────────────┐
+│ Logo MarcBuddy | [Preferences] 	│
+├─────────────────────────────────────┤
+│ 	│
+│ Olá, [Nome]!   	│
+│ 	│
+│ Essa semana em Design: 	│
+│ • Notícia 1 	│
+│ • Notícia 2 	│
+│ [Ver mais] 	│
+│ 	│
+├─────────────────────────────────────┤
+│ Resource da Semana 	│
+│ [Imagem] 	│
+LinkedIn
+Case studies
+Tendências de design
+Dicas profissionais
+Atualizações de produto
+Vagas de emprego
+Email Marketing
+
+-- 11 of 19 --
+
+│ [Descrição + CTA] 	│
+├─────────────────────────────────────┤
+│ Dica Rápida 	│
+│ [Gif animado ou screenshot] 	│
+│ "Como fazer X em 30 segundos" 	│
+├─────────────────────────────────────┤
+│ Logo Buddy | Redes Sociais 	│
+│ © 2024 MarcBuddy. Todos os direitos │
+│ [Unsubscribe] 	│
+└─────────────────────────────────────┘
+Design Conceitual:
+┌─────────────────────────────────────────────────┐
+│ "Escolha o plano perfeito para você" 	│
+│ (Nunito 700, 32px, Azul Marinho) 	│
+├─────────────────────────────────────────────────┤
+│ 	│
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ 	│
+│ │ Gratuito │ │ Básico ★ │ │ Completo │ 	│
+│ │ R$0/mês │ │R$29,90/mês│ │R$49,90/mês│ 	│
+│ │ 	│ │ 	│ │ 	│ 	│
+│ │ ✓ Feat 1 │ │ ✓ Feat 1 │ │ ✓ Feat 1 │ 	│
+│ │ ✓ Feat 2 │ │ ✓ Feat 2 │ │ ✓ Feat 2 │ 	│
+│ │ ✗ Feat 3 │ │ ✓ Feat 3 │ │ ✓ Feat 3 │ 	│
+│ │ 	│ │ 	│ │ 	│ 	│
+│ │ [Começar]│ │[Escolher]│ │[Escolher]│ 	│
+│ │(Gray bg) │ │(Verde BG)│ │(Verde BG)│ 	│
+│ └──────────┘ └──────────┘ └──────────┘ 	│
+│ 	│
+│ ┌────────────────────────────────────────┐ 	│
+│ │ Teams – R$99,90/mês 	│ 	│
+│ │ Para equipes até 5 pessoas 	│ 	│
+│ │ ✓ Todos os recursos 	│ 	│
+│ │ ✓ Controle de equipe 	│ 	│
+│ │ [Escolher] 	│ 	│
+│ └────────────────────────────────────────┘ 	│
+│ 	│
+└─────────────────────────────────────────────────┘
+Elementos:
+7.4 Página de Pricing
+Card destaque: Plano Básico com ★ e badge "Mais Popular"
+Cores: Off-white cards, Verde Vibrante para CTA primária
+Tipografia: Nunito para títulos, Poppins para features
+Hover: Card com sombra leve e verde vibrante na borda
+
+-- 12 of 19 --
+
+Estrutura de Cores:
+Template de Slide:
+╔════════════════════════════════════╗
+║ ┌──────────────────────────────┐ ║
+║ │ [Título - Nunito 700, 48px] │ ║
+║ │ 	│ ║
+║ │ [Conteúdo - Poppins 400, 18] │ ║
+║ │ 	│ ║
+║ │ [Logo MarcBuddy - corner] │ ║
+║ └──────────────────────────────┘ ║
+╚════════════════════════════════════╝
+Frente:
+Verso:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Seu Nome
+Seu Título | MarcBuddy
+  nome@marcbuddy.com
+  marcbuddy.com
+  instagram.com/marcbuddy
+8. Materiais de Marketing
+8.1 Apresentações (Pitch Deck)
+Background: Azul Marinho ou Off-white (alternando)
+Títulos: Nunito 700, Verde Vibrante ou Azul Marinho
+Corpo: Poppins 400, Azul Marinho ou Gray-700
+Destaque: Verde Vibrante para números e métricas
+8.2 Brochura (1–2 páginas)
+Logo grande
+Slogan principal
+3 benefícios principais
+CTA central
+Comparação de planos (simplificada)
+Depoimentos
+Contato e redes sociais
+8.3 Assinatura de Email
+
+-- 13 of 19 --
+
+[Logo MarcBuddy]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Usar SVG para web – Escalável, leve, nítido em qualquer tamanho
+✅ Manter espaço livre – 25% da altura do logo
+✅ Testar contraste – WCAG AA mínimo (4.5:1 para texto pequeno)
+✅ Ser consistente – Mesmas cores, tipografia, tom em todos os materiais
+✅ Usar Nunito para títulos – Reforça identidade visual
+✅ Usar Poppins para corpo – Legibilidade ótima
+✅ Destacar com Verde Vibrante – CTAs e ações principais
+✅ Documentar exceções – Se precisar de variação, documentar
+✅ Revisar regularmente – Manter consistência ao crescer
+❌ Distorcer o logo – Esticar, comprimir ou rotacionar
+❌ Usar cores não autorizadas – Apenas as definidas no manual
+❌ Sobrepor textos fracos – Verificar contraste sempre
+❌ Misturar tipografias – Usar apenas Nunito + Poppins + JetBrains Mono
+❌ Adicionar efeitos não documentados – Sem shadows, gradients ou filters aleatórios
+❌ Reduzir abaixo de 32px – Logo fica ilegível
+❌ Usar screenshots antigos – Manter materiais atualizados
+❌ Ignorar orientações de acessibilidade – Sempre testar com ferramentas
+❌ Comunicar em tom diferente – Manter "amigo especialista" consistente
+Aplicação Visual da Paleta
+NÍVEL 1 (Principal):
+[Azul Marinho] ████ – Fundo, estrutura, confiança
+[Verde Vibrante] ████ – Ação, destaque, energia
+[Off-white] ████ – Clareza, superfícies limpas
+NÍVEL 2 (Secundário):
+[Cinzas] ████ – Texto, borders, separadores
+PARTE 4: DIRETRIZES DE USO
+9. O Que Fazer ✅
+Boas Práticas
+10. O Que NÃO Fazer ❌
+Erros Comuns
+11. Hierarquia de Cores
+
+-- 14 of 19 --
+
+[Success Green] ████ – Confirmação, ativo
+[Warning Orange] ████ – Alerta, atenção
+NÍVEL 3 (Raro):
+[Error Red] ████ – Erro, bloqueio
+[Info Blue] ████ – Dica, informação
+Combinação 	Ratio 	Status
+Verde Vibrante + Off-white 7.2:1 	✅ AAA
+Azul Marinho + Off-white 	16.5:1 ✅ AAA
+Gray-500 + Off-white 	5.1:1 	✅ AA
+Gray-300 + Off-white 	2.5:1 	❌ Evitar para texto
+uado entre linhas e palavras
+Sempre tomar cuidado com estrutura semântica:
+12. Accessibility (Acessibilidade)
+12.1 Contraste de Cores
+12.2 Tipografia Acessível
+Tamanho mínimo: 14px para corpo, 18px para títulos
+Line-height mínimo: 1.5 para corpo, 1.2 para títulos
+Font-weight: Evitar menos de 400 (use Regular ou Bold)
+Espaçamento: Adeq
+12.3 Ordem de Leitura
+H1 → H2 → H3 (não pular níveis)
+Alt text em imagens
+Labels em form inputs
+Estrutura lógica de navegação
+PARTE 5: CASOS DE USO
+13. Exemplos Práticos de Aplicação
+
+-- 15 of 19 --
+
+De: MarcBuddy &lt;hello@marcbuddy.com&gt;
+Assunto: Bem-vindo ao MarcBuddy, [Nome]!  
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Logo]
+Olá [Nome]!
+Estamos muito felizes em ter você no MarcBuddy!
+Você agora tem acesso a:
+✨ Ferramentas web gratuitas (7 dias)
+  1 plugin básico para começar
+  Newsletter com dicas de design
+[Botão Verde: Explorar Dashboard]
+Se precisar de ajuda, estou aqui! Responda este email.
+Seu parceiro criativo,
+Marc Buddy  
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+╔══════════════════════════════════════╗
+║ ✅ Pagamento Confirmado! 	║
+├──────────────────────────────────────┤
+║ 	║
+║ [Mascote celebrando] 	║
+║ 	║
+║ Você agora está no Plano Básico! 	║
+║ ✅ Todos os plugins liberados 	║
+║ ✅ Ferramentas completas 	║
+║ ✅ Newsletter premium 	║
+║ 	║
+║ Sua license key: 	║
+║ MBK-X7K9-P2Q8-R5T6-U9V0 	║
+║ [Copiar] 	║
+║ 	║
+║ [Botão: Download Plugin Illustrator] ║
+║ [Botão: Ver Dashboard] 	║
+║ 	║
+║ Próxima cobrança: 15 de dezembro 	║
+║ [Gerenciar Assinatura] 	║
+║ 	║
+╚══════════════════════════════════════╝
+13.1 Email de Boas-vindas (Novo Usuário)
+13.2 Notificação de Sucesso (Post-Pagamento)
+
+-- 16 of 19 --
+
+╔═══════════════════════════════════════╗
+║   Trend Alert: Design em 2024 	║
+├───────────────────────────────────────┤
+║ 	║
+║ [Thumbnail de imagem] 	║
+║ 	║
+║ Descubra os 5 maiores trends de 	║
+║ design deste ano e como aplicá-los ║
+║ nos seus projetos. 	║
+║ 	║
+║   423 curtidas |   87 comentários ║
+║ 	║
+║ [Ler mais] [Deixar comentário] 	║
+╚═══════════════════════════════════════╝
+Às vezes, situações especiais requerem variações. Se precisar:
+Situação: Logo em fundo fotográfico complexo
+Solução: Versão de logo com contorno branco + sombra suave
+Documentação: Adicionada seção no manual
+13.3 Card de Comunidade (Newsletter)
+14. Inconsistências & Exceções
+14.1 Quando Pedir Exceção
+1. Documentar: Por que a exceção é necessária?
+2. Revisar: O design mantém a essência da marca?
+3. Aprovar: Gestor de marca ou líder de design deve validar
+4. Registrar: Adicionar ao documento de exceções autorizadas
+14.2 Exemplo de Exceção Aprovada
+PARTE 6: MANUTENÇÃO DA MARCA
+15. Verificação de Consistência (Auditorias)
+15.1 Checklist de Auditoria Trimestral
+[ ] Cores estão corretas em todo material?
+[ ] Tipografia está consistente?
+[ ] Logo está sendo usado corretamente?
+[ ] Tom de voz mantém personalidade?
+[ ] Redes sociais seguem template?
+
+-- 17 of 19 --
+
+Responsabilidade 	Dono
+Marca Overall 	Gestor de Marca
+Design Visual 	Designer Líder
+Comunicação/Ton Marketing Lead
+Website 	Dev Lead
+Redes Sociais 	Social Media Manager
+v1.0 – Lançamento inicial (2024)
+v1.1 – Adição de mascote (2024)
+v2.0 – Revisão completa (2025)
+Os seguintes arquivos estão disponíveis no repositório de marca:
+[ ] Website está atualizado?
+[ ] Emails seguem template?
+[ ] Materiais de marketing são atuais?
+15.2 Responsáveis
+16. Evolução da Marca
+16.1 Quando Atualizar Este Manual
+A cada 12 meses (revisão anual)
+Quando novo elemento visual for criado
+Quando paleta de cores sofrer ajustes
+Quando mascote ganhar novas expressões
+Quando voz de marca mudar significativamente
+16.2 Versionamento
+APÊNDICE
+A. Arquivos de Origem
+logo-horizontal.svg – Logo com texto
+logo-square.svg – Logo quadrado
+mascote-expressions.ai – Arquivo de mascote com expressões
+color-palette.ase – Paleta de cores para Adobe
+typography-guide.pdf – Especificações detalhadas
+
+-- 18 of 19 --
+
+Para Design/Prototipagem:
+Para Desenvolvimento:
+&lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&amp;f
+Para dúvidas sobre aplicação da marca:
+Email: brand@marcbuddy.com
+Slack: #marca-marcbuddy
+Confluence: [Link ao wiki de marca]
+Este manual é o coração visual e verbal da MarcBuddy. Seguindo estas diretrizes, garantimos que
+cada ponto de contato com nossos usuários reforce a promessa de marca: ser o parceiro criativo
+que capacita designers a criar melhor e mais rápido.
+A consistência constrói confiança. A confiança constrói comunidade. A comunidade cria oportunidade.
+Somos MarcBuddy. Somos seus parceiros criativos.  
+Versão: 1.0
+Data: Novembro 2024
+Próxima revisão: Novembro 2025
+Última atualização: 27 de Novembro de 2024
+email-templates.html – Templates de email prontos
+social-media-templates.figma – Componentes de redes sociais
+B. Fontes Recomendadas
+Google Fonts (Nunito, Poppins, JetBrains Mono)
+C. Ferramentas de Validação
+Contrast Checker: https://webaim.org/resources/contrastchecker/
+Color Picker: https://htmlcolorcodes.com/
+Accessibility: https://www.axe-devtools.com/
+D. Contato
+Conclusão
+
+-- 19 of 19 --
+
