@@ -1,13 +1,16 @@
 import Stripe from 'stripe';
 
-// Inicializar Stripe
-if (!process.env.STRIPE_SECRET_KEY) {
-  console.error('❌ STRIPE_SECRET_KEY não configurado no .env');
-  throw new Error('STRIPE_SECRET_KEY é obrigatório');
-}
+// Inicializar Stripe (opcional - permite servidor iniciar sem Stripe)
+let stripe = null;
+const isStripeEnabled = !!process.env.STRIPE_SECRET_KEY;
 
-// Inicializar Stripe sem especificar versão da API (usa a mais recente estável)
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+if (!isStripeEnabled) {
+  console.warn('⚠️ STRIPE_SECRET_KEY não configurado. Funcionalidades do Stripe estarão desabilitadas.');
+} else {
+  // Inicializar Stripe sem especificar versão da API (usa a mais recente estável)
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  console.log('✅ Stripe inicializado com sucesso');
+}
 
 // Mapeamento entre planos do sistema e preços do Stripe
 const STRIPE_PRICE_IDS = {
@@ -29,6 +32,9 @@ const STRIPE_PRICE_IDS = {
  * @param {string} couponCode - Código do cupom (opcional)
  */
 export const createCheckoutSession = async (priceId, userId, userEmail, subscriptionId, successUrl, cancelUrl, paymentMethodTypes = ['card'], customAmount = null, couponCode = null) => {
+  if (!isStripeEnabled || !stripe) {
+    throw new Error('Stripe não está configurado. Configure STRIPE_SECRET_KEY nas variáveis de ambiente.');
+  }
   try {
     // Mapear códigos do sistema para tipos do Stripe
     const stripePaymentTypes = paymentMethodTypes.map(type => {
@@ -193,6 +199,9 @@ export const hasStripePrice = (planType) => {
  * Processar webhook do Stripe
  */
 export const constructWebhookEvent = (payload, signature, secret) => {
+  if (!isStripeEnabled || !stripe) {
+    throw new Error('Stripe não está configurado. Configure STRIPE_SECRET_KEY nas variáveis de ambiente.');
+  }
   try {
     return stripe.webhooks.constructEvent(payload, signature, secret);
   } catch (error) {
@@ -205,6 +214,9 @@ export const constructWebhookEvent = (payload, signature, secret) => {
  * Obter assinatura do Stripe
  */
 export const getStripeSubscription = async (subscriptionId) => {
+  if (!isStripeEnabled || !stripe) {
+    throw new Error('Stripe não está configurado. Configure STRIPE_SECRET_KEY nas variáveis de ambiente.');
+  }
   try {
     return await stripe.subscriptions.retrieve(subscriptionId);
   } catch (error) {
@@ -217,6 +229,9 @@ export const getStripeSubscription = async (subscriptionId) => {
  * Cancelar assinatura no Stripe
  */
 export const cancelStripeSubscription = async (subscriptionId) => {
+  if (!isStripeEnabled || !stripe) {
+    throw new Error('Stripe não está configurado. Configure STRIPE_SECRET_KEY nas variáveis de ambiente.');
+  }
   try {
     return await stripe.subscriptions.cancel(subscriptionId);
   } catch (error) {
@@ -229,6 +244,9 @@ export const cancelStripeSubscription = async (subscriptionId) => {
  * Obter customer do Stripe
  */
 export const getStripeCustomer = async (customerId) => {
+  if (!isStripeEnabled || !stripe) {
+    throw new Error('Stripe não está configurado. Configure STRIPE_SECRET_KEY nas variáveis de ambiente.');
+  }
   try {
     return await stripe.customers.retrieve(customerId);
   } catch (error) {
@@ -237,4 +255,6 @@ export const getStripeCustomer = async (customerId) => {
   }
 };
 
+// Exportar stripe e status de habilitação
+export { isStripeEnabled };
 export default stripe;
