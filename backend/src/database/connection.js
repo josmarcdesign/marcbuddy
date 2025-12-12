@@ -16,16 +16,36 @@ if (process.env.SUPABASE_DB_CONNECTION_STRING) {
   // Para schemas customizados como 'marcbuddy', use a connection string direta (porta 5432)
   let connectionString = process.env.SUPABASE_DB_CONNECTION_STRING;
   
-  // Se for pooler (porta 6543), tentar converter para direta (porta 5432)
-  if (connectionString.includes(':6543/')) {
-    console.warn('⚠️  Usando pooler (porta 6543). Para schemas customizados, considere usar connection string direta (porta 5432)');
-    // Tentar converter para porta direta
-    connectionString = connectionString.replace(':6543/', ':5432/');
+  // Se for pooler (porta 6543 OU hostname pooler), converter automaticamente para direta (porta 5432)
+  // O pooler não acessa schemas customizados como 'marcbuddy'
+  // IMPORTANTE: O hostname do pooler é diferente do direto
+  const isPooler = connectionString.includes(':6543/') || connectionString.includes('pooler.supabase.com');
+  if (isPooler) {
+    console.warn('⚠️  Pooler detectado. Convertendo para connection direta (porta 5432) para acessar schema marcbuddy');
+    // Extrair project ref da connection string (ex: umydjofqoknbggwtwtqv)
+    const projectRefMatch = connectionString.match(/postgres\.([^.]+)\./);
+    if (projectRefMatch && projectRefMatch[1]) {
+      const projectRef = projectRefMatch[1];
+      // Construir connection string direta usando o hostname correto
+      // Formato: postgresql://postgres.PROJECT_REF:PASSWORD@db.PROJECT_REF.supabase.co:5432/postgres
+      const passwordMatch = connectionString.match(/:(.+?)@/);
+      const password = passwordMatch ? passwordMatch[1] : '';
+      connectionString = `postgresql://postgres.${projectRef}:${password}@db.${projectRef}.supabase.co:5432/postgres`;
+      console.log('✅ Connection string atualizada para porta direta (db.*.supabase.co)');
+    } else {
+      // Fallback: tentar converter hostname e porta
+      console.warn('⚠️  Não foi possível extrair project ref, tentando converter hostname');
+      connectionString = connectionString
+        .replace(':6543/', ':5432/')
+        .replace(/pooler\.supabase\.com/g, 'db.umydjofqoknbggwtwtqv.supabase.co')
+        .replace(/aws-[0-9]-[a-z0-9-]+\.pooler\.supabase\.com/g, 'db.umydjofqoknbggwtwtqv.supabase.co');
+    }
   }
   
   pool = new Pool({
     connectionString: connectionString,
     ssl: { rejectUnauthorized: false },
+    family: 4, // Forçar IPv4 (evita erro ENETUNREACH com IPv6 no Render)
     max: 20,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 10000,
@@ -39,6 +59,7 @@ if (process.env.SUPABASE_DB_CONNECTION_STRING) {
     user: process.env.SUPABASE_DB_USER,
     password: process.env.SUPABASE_DB_PASSWORD,
     ssl: { rejectUnauthorized: false },
+    family: 4, // Forçar IPv4 (evita erro ENETUNREACH com IPv6 no Render)
     max: 20,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 10000,
@@ -83,16 +104,40 @@ pool.on('error', (err) => {
 // Função para executar queries (mantém compatibilidade com código existente)
 export const query = async (text, params) => {
   const start = Date.now();
+  const client = await pool.connect();
   try {
-    const res = await pool.query(text, params);
+    // Sempre configurar search_path antes de executar queries (importante para schemas customizados)
+    // Isso garante que tabelas do schema marcbuddy sejam encontradas
+    try {
+      await client.query('SET search_path TO marcbuddy, public');
+    } catch (pathError) {
+      // Se não conseguir configurar search_path, continuar mesmo assim
+      console.warn('⚠️  Não foi possível configurar search_path:', pathError.message);
+    }
+    
+    // Executar a query
+    const res = await client.query(text, params);
     const duration = Date.now() - start;
     const previewSql = text.trim().replace(/\s+/g, ' ').slice(0, 200);
     const paramsLabel = params && params.length ? ` params=${JSON.stringify(params).slice(0, 200)}` : '';
     console.log(`[DB] ${duration}ms rows=${res.rowCount} sql="${previewSql}"${paramsLabel}`);
     return res;
   } catch (error) {
-    console.error('Erro na query:', error);
+    console.error('❌ Erro na query:', error.message);
+    console.error('Query:', text.substring(0, 200));
+    console.error('Connection String (oculto):', process.env.SUPABASE_DB_CONNECTION_STRING ? 
+      process.env.SUPABASE_DB_CONNECTION_STRING.replace(/:[^:@]+@/, ':****@') : 'não configurado');
+    
+    if (error.message.includes('Tenant or user not found')) {
+      console.error('💡 Erro "Tenant or user not found" indica:');
+      console.error('   1. Connection string usando pooler (porta 6543) ao invés de direta (5432)');
+      console.error('   2. Hostname incorreto (deve ser db.*.supabase.co, não pooler.supabase.com)');
+      console.error('   3. Schema marcbuddy não acessível via pooler');
+      console.error('💡 Solução: Use connection string direta do Supabase Dashboard');
+    }
     throw error;
+  } finally {
+    client.release();
   }
 };
 
